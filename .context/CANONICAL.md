@@ -505,6 +505,7 @@ See [examples/workflows/](examples/workflows/) for full list.
 <details>
 <summary><strong>📋 Changelog</strong></summary>
 
+- **v8.5.0** (Feb 12 2026): **Phase 1 Complete** — MCP Tool Server, Permissioning Layer, Search MRR +105%. "Linux OS for AI Agents" pivot.
 - **v1.5.0** (Feb 1 2026): **The 5-Minute Upgrade** — `athena init` command scaffolds workspace instantly, `--doctor` flag for system health check, fixed path discovery for pip installs, centralized version management
 - **v8.2-Stable** (Feb 1 2026): Metrics Sync — 984 sessions, 308 protocols, 160 scripts; README overhaul, KG integration audit
 - **v8.0-Stable** (Jan 2026): Zero-Point Refactor — Sovereign Environment hardened, Score-Modulated RRF (weights rebalanced), tech debt consolidated
