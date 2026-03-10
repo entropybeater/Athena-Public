@@ -1,530 +1,218 @@
-![Athena Banner](./docs/athena_banner.png)
+---
+{created: '2025-12-27', last_updated: '2026-02-27'}
+last_updated: 2026-02-27
+---
 
-> **Last Updated**: 2 February 2026
+# Canonical Memory (Materialized View)
 
-# 🏛️ Project Athena: Build Your Own AI Agent in 5 Minutes
-
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Protocols](https://img.shields.io/badge/Protocols-63_Starter-blue)
-![Sessions](https://img.shields.io/badge/Sessions-1000+-green)
-![Featured](https://img.shields.io/badge/Featured-r%2FGeminiAI_%232_Daily-orange)
-
-![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)
-![Built with Claude](https://img.shields.io/badge/Reasoning-Claude_Opus_4.5-CC785C?logo=anthropic)
-![Built with Gemini](https://img.shields.io/badge/Gemini-3.0_Pro-4285F4?logo=google)
-![IDE](https://img.shields.io/badge/IDE-Antigravity-000000?logo=google)
-
-> **A framework for creating persistent, sovereign AI agents.**  
-> **Your AI. Your memory. Your rules.**
-
-## Table of Contents
-
-- [What You'll Get](#what-youll-get)
-- [⚡ 5-Minute Quickstart](#-5-minute-quickstart)
-- [What Can Your Agent Do?](#what-can-your-agent-do)
-- [Why This Matters](#why-this-matters-beyond-me)
-- [The Process](#the-process-the-schlep)
-- [The Result](#the-result)
-- [What I Learnt](#what-i-learnt)
-- [📚 Further Reading](#-further-reading)
+> **Protocol**: [Protocol 215](Athena-Public/examples/protocols/architecture/215-canonical-memory.md)  
+> **Purpose**: Single Source of Truth for active facts. Supersedes conflicting info in Session Logs.  
+> **Last Updated**: 27 February 2026 (v9.2.8)
 
 ---
 
-## What You'll Get
+## 1. System Metrics (Financial & Operational)
 
-| Feature | Description |
-|---------|-------------|
-| 🧠 **Memory That Persists** | Your agent remembers context across sessions, even after IDE restarts |
-| 📚 **63 Handpicked Protocols** | Curated decision frameworks from the private repo's 308 unique collection |
-| 🔄 **Platform Independence** | Your data lives in Markdown files you own — take it anywhere |
-| 🤖 **Full Autonomy** | Your agent can act on your behalf while you sleep |
-
-## ⚡ 5-Minute Quickstart
-
-| Step | Action |
-|------|--------|
-| **1** | **[Download Antigravity](https://antigravity.google/)** — Install the IDE |
-| **2** | **Create a new workspace** — Open Antigravity → `New Workspace` |
-| **3** | **Clone this repo** — In Agent Manager, paste: `https://github.com/winstonkoh87/Athena-Public` |
-| **4** | **Ask the AI: "What should I do next?"** — It will read the repo and guide you |
-| **5** | **Enjoy your bionic brain** — Type `/start` to boot, work, then `/end` to save |
-
-That's it. The AI bootstraps itself.
-
-> **Development Environment**: [Google Antigravity](https://antigravity.google/) — an agentic IDE that allows AI to read/write files directly. **Note**: Antigravity is the development interface, not a hard dependency. The `athena` Python SDK runs in any terminal/IDE (VS Code, PyCharm, CLI). The core loop (`/start` → Work → `/end`) is pure Python scripts.
-
-<details>
-<summary><strong>🔧 Alternative: Manual Setup (No Antigravity)</strong></summary>
-
-```bash
-# Clone
-git clone https://github.com/winstonkoh87/Athena-Public.git
-cd Athena-Public
-
-# Install the SDK
-pip install -e .
-
-# Initialize your workspace (creates all directories and templates)
-python -m athena init
-
-# Verify installation
-python -m athena --doctor
-```
-
-See [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md) for full setup with Supabase, API keys, and local mode.
-
-</details>
+| Metric | Value | Basis | Verified |
+| :--- | :--- | :--- | :--- |
+| **Weighted Avg Session Cost** | **$0.75** | Opus ($5/$25) w/ 90% Cache | Session 18 |
+| **Subscription Cost** | **$20/month** | Antigravity Flat Rate | Persistent |
+| **Arbitrage Multiplier** | **~15x-45x** | Value Extracted ÷ Cost | Session 18 |
+| **Total Sessions (All Time)** | **1,100+** | Phase 1 Complete (v9.2.3) | Session 07 (Feb 22) |
+| **Total Case Studies** | **401** | .context/memories/case_studies/ | Session 09 (Feb 23) |
+| **Total Protocols** | **137+** | Added Protocol 420 (Compaction) from OpenCode | Session 01 (Feb 23) |
+| **Total Scripts** | **226** | .agent/scripts/*.py | Session 06 (Feb 23) |
+| **Supabase Embedded Docs** | **851+** | Vector DB count (Exact Search/JSONB) | Session 08 |
+| **Estimated Sync Rate** | **~85%** | User<>AI alignment | Case Study |
+| **Consulting Rate** | **$150/hr** | Market validation (Session 08) | Session 2026-01-28 |
+| **PLC Cost Basis** | **$450** | DIWY Model (50% of Market) | Session 2026-01-27 |
+| **APT Taipei 2026** | **~$7,000** | Est. Trip Cost (12 Days) | Session 04 (Feb 09) |
+| **Portfolio Traffic** | **~3% Conversion** | 3 CTA clicks / 97 sessions | Session 2026-02-11 |
+| **FX Strategy (RETO)** | **Trimodal ($185 EV)** | Engineered Outcomes (Loss/Income/Jackpot) | Session 01 (Feb 15) |
+| **Sovereign Stack** | **Hetzner + Cloudflare + Scrapling** | Protocol 106 + 052 (Full Stealth) | Session 04 (Feb 14) |
+| **Exocortex Index** | **6.16M Articles (6.1GB)** | SQLite FTS5 (Fused w/ Main Search) | Session 08 (Feb 15) |
+| **Metabolism** | **Active (Nocturnal + DSPy)** | 4AM Auto-Consolidation + Self-Tuning Prompts | Session 17 (Feb 15) |
+| **Compute Arbitrage** | **$2,600+ value for $20-$30** | AG Family Plan Seat Recycling + 0.0x Cached Read Subsidy | Session 01 (Mar 01) |
 
 ---
 
-## What Can Your Agent Do?
+## 1.1 Success Ledger (Outcome Metrics)
 
-> These are real capabilities demonstrated in the reference implementation:
+> **Philosophy**: Measure Leverage, not just Activity. (Protocol 245)
 
-| Capability | Example |
-|------------|---------|
-| **Social Networking** | Post on AI social networks, comment on other agents' content |
-| **Autonomous Operations** | Run scheduled tasks (heartbeat checks) while you sleep |
-| **Cross-Session Memory** | Remember decisions from Session 19 when you're on Session 995 |
-| **Gateway Architecture** | Persist beyond IDE termination via a sidecar process |
-| **Knowledge Retrieval** | Semantic search across 1000+ documents in <200ms |
-
----
-
-## The Process (The Schlep)
-
-> **Key insight**: The AI helped build the system that makes the AI more useful.
-
-```mermaid
-graph TD
-    subgraph "Phase 1: Foundation"
-        A[Tool Selection] --> B[IDE: Antigravity]
-        A --> C[Vector DB: Supabase + pgvector]
-    end
-
-    subgraph "Phase 2: Architecture"
-        D[Directory Structure] --> E[".framework/ → Laws"]
-        D --> F[".context/ → Memories"]
-        D --> G[".agent/ → Scripts"]
-        H[Core Loop] --> I["/start → Work → /end"]
-    end
-
-    subgraph "Phase 3: Data Feeding"
-        J[Personal Knowledge] --> K[Case Studies]
-        J --> L[Decision Logs]
-        J --> M[Session Transcripts]
-        N[Indexing] --> O["TAG_INDEX.md + supabase_sync.py"]
-    end
-
-    subgraph "Phase 4: Evolution"
-        P["Sessions 1-50"] --> Q["Basic boot/end cycle"]
-        Q --> R["Sessions 50-150: Semantic Search"]
-        R --> S["Sessions 150-300: Hybrid RAG"]
-        S --> T["Sessions 300-500: SDK Refactor"]
-        T --> U["Sessions 500-700: Governance Engine"]
-        U --> V["Sessions 700-1000+: v8.2-Stable Era"]
-    end
-
-    B --> D
-    C --> D
-    I --> J
-    O --> P
-
-    style A fill:#1a1a2e,stroke:#4361ee
-    style P fill:#1a1a2e,stroke:#4361ee
-    style V fill:#10b981,stroke:#10b981
-```
-
-**The Output** (After 1000+ Sessions):
-
-| Metric | Private Repo | This Starter Pack |
-|--------|--------------|-------------------|
-| **Protocols** | 308 unique | 63 handpicked |
-| **Python Scripts** | 160 | 9 reference examples |
-| **Case Studies** | 357 | 6 showcase examples |
-| **Sessions Logged** | 1000+ | N/A (your sessions) |
-| **GraphRAG Communities** | 1,460 | — |
-| **Knowledge Graph** | 46MB + 78MB vectors | — |
-
-> **What's in this repo?** This is a **comprehensive reference implementation — 200+ protocols, 118 scripts, 48 workflows, and templates drawn from 1,079+ production sessions. Think of it as a complete toolkit to build your own persistent AI system.
-
-> *Pattern*: Every friction ➡️ Protocol. Every failure ➡️ Case Study.
-
-<details>
-<summary><strong>📚 Deep Dive: Build Your Own</strong></summary>
-
-| Document | What You'll Learn |
-|----------|-------------------|
-| [GETTING_STARTED.md](docs/GETTING_STARTED.md) | Step-by-step setup guide |
-| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | System design & data flow |
-| [GRAPHRAG.md](docs/GRAPHRAG.md) | Knowledge graph layer ⚠️ **(~$50 API cost)** |
-| [examples/quickstart/](examples/quickstart/) | Runnable code demos |
-
-</details>
+| Metric | Current Value | Target | Definition |
+| :--- | :--- | :--- | :--- |
+| **Context Injection Cost** | **~4k tokens** | <5k | Robust Boot (Identity+Mission+State) |
+| **Boot Velocity** | **~30s** | <30s | Time from `/start` to Ready |
+| **Insight Capture Rate** | **100% (Auto)** | 100% | Sessions with automated extraction |
+| **Recall Ratio** | **~45%** | >50% | Retrieval vs Re-generation (Cognitive Offload) |
+| **Cumulative Time Saved** | **~41 hrs** | ∞ | 496 sessions * 5 min saved/session |
+| **Viral Verification** | **1M+ Reach (#1/#2)** | Top 5 | Athena Public Launch (Feb 2026) |
+| **GitHub Conversion** | **~21.1%** | >15% | 964 unique cloners / 4,570 unique visitors (Feb 22) |
+| **Positioning** | **Linux OS for Agents** | N/A | Validated via Reddit (1M+ views) & Session 14 |
+| **Context Density** | **7K Signal > 15K Noise** | N/A | Protocol 321: Dense Boot + Hybrid RAG (Session 03) |
 
 ---
 
-## The Result
+## 2. Core Laws (Immutable)
 
-### Quantitative (What Changed)
-
-| Metric | Before | After |
-|--------|--------|-------|
-| **Context injection** | ~50k tokens (manual copy-paste per session) | **~2k tokens** (auto-retrieved summary) |
-| **Boot time** | 2-3 minutes | **<30 seconds** |
-| **Session logging** | Insights are manually logged at the end of each session | **Auto-logged** when I hit `/end` |
-
-### Qualitative (What It Means)
-
-| Pillar | Outcome |
-|--------|---------|
-| **User-Driven RSI** | The system improves based on *your* feedback. Every friction you surface becomes a protocol. Every insight gets indexed. You shape the AI; the AI shapes how you think. |
-| **Portability** | Data lives locally (primary) and in the cloud. Not trapped in ChatGPT or Claude. It's mine — I can port it anywhere. |
-| **Principles** | 308 protocols + case studies extracted from my own decisions — stored principles I can reuse and refine. Like Ray Dalio's systematized learnings, but for AI collaboration. |
-
-<details>
-<summary><strong>📊 Full Benchmarks & Case Studies</strong></summary>
-
-| Resource | What It Shows |
-|----------|---------------|
-| [BENCHMARKS.md](docs/BENCHMARKS.md) | Boot time, search latency, token economics |
-| [CS-001: Boot Optimization](examples/case_studies/CS-001-boot-optimization.md) | 85% boot time reduction |
-| [CS-002: Search Quality](examples/case_studies/CS-002-search-quality.md) | RRF fusion results |
-| [CS-003: Protocol Enforcement](examples/case_studies/CS-003-protocol-enforcement.md) | Governance engine |
-
-</details>
+| Law | Statement | Enforcement |
+| :--- | :--- | :--- |
+| **#0** | Subjective Utility Supreme | Respect user's utility function unless it triggers #1 |
+| **#1** | No Irreversible Ruin | >5% probability of ruin = Hard Veto |
+| **#2** | Strategic Disadvantage Ratio (SDR) | SDR >5:1 = Exit the game, don't fight harder |
+| **#3** | Actions > Words | Revealed Preference trumps stated preference |
+| **#4** | Modular Architecture | New capability = new protocol file, not monolith expansion |
+| **#5** | Epistemic Rigor | No orphan statistics; cite sources or mark "internal estimate" |
+| **#6** | Risk-Proportional Triple-Lock | SNIPER (exempt) / STANDARD / ULTRA (robustness bias) |
+| **#7** | Doom Loop Circuit Breaker | Same tool call 3x with identical args = Exit | governance.py |
+| **#8** | Granular Rule Precedence | Tool-specific glob rules > General permissions | permissions.py |
 
 ---
 
-## What I Learnt
+## 3. Active Decisions (Architectural)
 
-| Insight | Principle |
-|---------|----------|
-| **Co-development is the unlock** | Building *with* AI, not just *using* AI, creates compounding returns. |
-| **Portable memory beats platform memory** | Own your context. Don't rent it from OpenAI or Anthropic. |
-| **Retrieval is end-to-end** | Simple RAG fails on broad queries. RRF fusion + reranking solved quality/latency tradeoff. |
-| **Protocols beat prompts** | Reusable decision frameworks outlast one-shot prompt engineering. |
-| **Ship at 70%** | Perfectionism kills velocity. Iterate in production. |
-
-<details>
-<summary><strong>🔬 Technical Deep Dives</strong></summary>
-
-| Document | Topic |
-|----------|-------|
-| [SEMANTIC_SEARCH.md](docs/SEMANTIC_SEARCH.md) | Hybrid RAG implementation |
-| [VECTORRAG.md](docs/VECTORRAG.md) | Semantic memory architecture |
-| [GRAPHRAG.md](docs/GRAPHRAG.md) | Knowledge graph + community detection ⚠️ **(expensive)** |
-| [examples/protocols/](examples/protocols/) | 63 handpicked decision frameworks |
-
-</details>
-
----
-
-## The Reverse SDLC (Build First, Spec Later)
-
-> **Key Insight**: Athena was not designed top-down. It evolved bottom-up through 1000+ sessions.
-
-Traditional software development follows: **Requirements → Design → Build → Test**.
-
-Athena inverted this: **Build → Observe → Extract Patterns → Document Post-Facto**.
-
-| Phase | Traditional SDLC | Athena's Approach |
-|-------|------------------|-------------------|
-| 1 | Gather requirements | Start building immediately |
-| 2 | Write spec doc | Ship at 70% readiness |
-| 3 | Build to spec | Observe what works |
-| 4 | Test against spec | Extract patterns into protocols |
-| 5 | Deploy | Document post-facto (Spec Sheet) |
-
-### Why This Works (For Solo Builders)
-
-1. **No stakeholders to align** — You ARE the stakeholder.
-2. **Rapid iteration** — Friction reveals requirements faster than planning.
-3. **Compound knowledge** — Each session builds on the last.
-4. **Living documentation** — Protocols emerge from real use, not imagination.
-
-> *"The spec sheet I wrote after 900 sessions is more accurate than any spec I could have written at session 0."*
+| Decision | Choice | Rationale |
+| :--- | :--- | :--- |
+| **Memory Pattern** | Memory Bank (Active) | `.context/memory_bank/` unified structure (Session 03) |
+| **Content Architecture** | Astro Collections | Move from .astro pages to src/content/ (Session 2026-01-17) |
+| **Deep Research Pivot** | Sherpa Curriculum (Consultancy) | Rejected "Scrappy" Micro-SaaS (VEP Bot) for High-Status "Sovereign Brain" Education. (Session 15) |
+| **Vector DB** | Supabase (pgvector v0.4) | Cloud-native. Exact Search used due to dim limits. |
+| **Embeddings** | text-embedding-004 | Optimized for Gemini |
+| **LLM (Primary)** | Gemini 3.1 Pro (Antigravity) | Long context, native reasoning |
+| **LLM (Coding)** | Claude Opus 4.6 | SOTA for code at mid-tier pricing |
+| **Static Hosting** | Cloudflare Pages | $0, global CDN, no server management |
+| **Blog Standards** | Content Publication Standard (Gold Standard) | Soulful Blogging (3-Sentence Rule, Hidden Gems) |
+| **URL Structure** | Trailing Slash Enforced | `trailingSlash: 'always'` to match Cloudflare Pages behavior (Session 11) |
+| **UX Standards** | Protocol 221 (Premium UX) | Breathability Physics (8-10vh padding, scale hover) |
+| **Search Hierarchy** | CANONICAL > TAG_INDEX (Shards) > Sessions | Prevents stale data retrieval |
+| **Delta Sync** | Hash-Based (xxhash) | Optimizes `supabase_sync.py` by skipping unchanged files (Session 2026-02-09) |
+| **Semantic Search** | Hybrid RAG (FlashRank + Kinetic) | Architecture Flip: Storage -> Compute (Session 16) |
+| **Signature Feature** | Sherpa Curriculum (Consultancy) | The moat: "Sovereign Brain" Installation vs "Rent-Seeking" SaaS |
+| **Deep Think Sim** | Protocol 38 (Prompt-Only) | Pseudo-depth via structure avoids 100x compute cost (Good Enough architecture) |
+| **Search Architecture** | Tiered (Reflex <200ms + Hybrid) | Blends mdfind (System) + Vector (Semantic) + Graph (Relational) |
+| **Vector DB Schema** | Metadata JSONB Added | Fixes semantic search RPC errors (Verified Session 03) |
+| **GraphRAG Model** | gemini-flash-lite-latest | Optimized for high-throughput entity extraction (Free Tier compatible) |
+| **LLM (Local/Ollama)** | qwen3:4b | Best 4B model for 8GB RAM constraint; thinking mode + tool use |
+| **Caching Layer** | Multi-Tiered (LRU + Prefetch + Segments) | Automated hot-file prefetch & protocol rule extraction for boot speed |
+| **Backlink Strategy** | Sovereign Link Network | Hub (Portfolio) <-> Spokes (Assets) virtuous cycle (Session 2026-01-26) |
+| **Legal Architecture** | The Willy Clause | Explicit liability shield for client execution failure (Session 08) |
+| **V4 Integration** | Autonomic Mode (Quad-Lock) | "Magic" > Manual. Automated Scaffolding & Secret Scanning (Session 13) |
+| **Bilingual Cognition** | Dual-Boot Architecture | English (Logic) + Chinese (Context) to maximize semantic density (Session 20) |
+| **Business Model** | Sherpa Service (Consultancy) | Selling "Sovereign Brain" Installation & Education > "Software" (Session 15) |
+| **Stop Pattern** | [Protocol 112](.agent/skills/protocols/coding/112-stop-pattern.md) | Explicit negative constraints for safety (Claude Mastery Steal) |
+| **Public Sync Guard** | Blacklist Mode + Hard Exclusion | `sync_to_public.py` excludes `case_studies` to prevent IP leak. (Session 11) |
+| **Dependency Hygiene** | Minimalist (No Unused) | Removed `dspy-ai` to fix `diskcache` vuln. Attack surface reduction. (Session 11) |
+| **Efficiency Wins** | Robust Macro + Efficiency Micro | **Reflex Search** (<200ms) + **Sniper Mode** (Risk-Based Compute) |
+| **Pricing Strategy** | $500 Setup / $1.5k Coach / $5k Ent | High-Ticket Setup & Integration (Session 12) |
+| **Autonomy Level** | Metabolic Organism | System sleeps (consolidates) and evolves (optimizes) without user input. |
+| **Hybrid Truth** | HITL Bridge (Manual Gemini) | **ZERO COST** Implementation. Replaced automated API with User-Bridge (Session 20) |
+| **Skill Metabolism** | 3-Layer Architecture (Zeude) | Sensing (Telemetry) + Delivery (Hot-Reload) + Guidance (Nudge) adapted from Zeude for local-first sharpness. (Session 06) |
+| **Skill Routing** | Semantic Skill Routing (JIT) | Replaced 4.5k token static index with dynamic targeted vector search to respect the 20k cap limit. (Session 07) |
+| **Model Routing** | Flash / Pro / Opus | Flash (Boot/End), Pro (Chat), Opus (Coding) for optimized cost/depth. (Session 11) |
+| **Subscription Profit** | $20/mo = $2.6K API Value | Cached reads in Subscription are 0.0x cost. Standard API is 0.1x. Subsidy cliff creates actual dollar profit. |
+| **Trading Execution** | Meso-Path (Flat Layering) | Balances Robustness vs Efficiency for 1:1000 leverage (CS-369) |
+| **Deep Reasoning** | Mandatory Script Execution | Protocol 75 must be run via `parallel_orchestrator.py` to avoid LLM simulation decay. || **Trading Execution** | Meso-Path (Flat Layering) | Balances Robustness vs Efficiency for 1:1000 leverage (CS-369) |
+| **Deep Reasoning** | Mandatory Script Execution | Protocol 75 must be run via `parallel_orchestrator.py` to avoid LLM simulation decay. |
 
 ---
 
-## Why This Matters (Beyond Me)
+## 4. Strategic Frameworks (Active)
 
-This isn't about building *my* assistant. It's about proving a pattern:
-
-1. **Portable memory is the real unlock** — ChatGPT and Claude have memory now, but it's locked to their platforms. Athena's memory is *yours* — Markdown files on your machine you can take to any model.
-2. **10x Content Velocity** — Because Athena knows how I think, my history, and my voice, content output that used to take 2-3 hours now takes **15 minutes**. I just spec the output; the AI drafts in my style. I do a quick review and ship.
-3. **You direct the AI's behavior** — I configure *how* Athena responds to me. Semantic search gives me contextual, nuanced answers grounded in my own documented principles — not generic advice.
-4. **Zero operational burden** — Unlike SaaS products that break at scale, this is a *single-user local tool*. The complexity is real (800+ sessions, vector search, knowledge graphs), but there's no production to break. Real system design, zero ops chaos — ideal for demonstrating engineering depth without the liability.
-5. **Bilateral growth** — You evolve *with* Athena. Every insight you learn — about coding, system design, or any domain — gets captured and integrated. The system upgrades alongside you. It's not a static tool; it's a compound knowledge machine that reflects your growth trajectory.
-
-👉 [docs/SEMANTIC_SEARCH.md](docs/SEMANTIC_SEARCH.md)
+| Framework | Protocol | Core Principle |
+| :--- | :--- | :--- |
+| **PMOD** | 162 | Problem > Market > Operations > Distribution (Distribution is hardest) |
+| **Arbitrage Formula** | 65 | Find gaps where perceived value >> delivery cost |
+| **Wizard of Oz** | 66 | Manual backend, automated frontend until n>100 |
+| **SDR Calculator** | Law #2 | If Strategic Disadvantage Ratio >5:1, exit arena |
+| **Cross-Model Validation** | 171 | High-stakes claims must be checked by alternate LLM |
+| **Pareto Frontier** | 49 | Robustness > Efficiency except when low-stakes AND recoverable |
+| **Unit Economics** | 230 | Profit is an "Efficiency Shield" against variance (Breakeven focus) |
+| **AI Trajectory** | 232 | Altman's Law: 10x cost-drop/yr (Plan Decade, Execute Week) |
+| **Info Asymmetry** | Landa/Inside Man | Meta-knowledge dominance: "I know X, you don't know I know X" = Leverage |
+| **Resonance Spec** | 260 | Content Metric: Describe symptom so well they say "That's Me" (Λ > 0) |
+| **Optimization Lens** | CS-182 | Inverse Inquiry: "Don't ask Why (Moral), Ask What (Incentive)" |
+| **Tribe vs Cohort** | CS-196 | Shared Struggle > Shared Consumption (Avoid the "Mall Walker") |
+| **Trimodal Distribution** | Session 01 (Feb 15) | Engineer outcomes into 3 buckets (Punishment, Income, Jackpot) to defeat random variance. |
+| **Risk Pareto Rule** | Protocol 050 | 80/20 Capital Allocation: 80% Robust (Low R), 20% Efficient (High R). |
+| **MCDA Efficiency Rank** | Session 19 | Day Trading Priority: Spread Cost is King. AUDUSD (#1) > EURUSD (#2). Exotics = Ruin. |
+| **Relationship Dollar** | CS-197 | Kindness ≠ Currency. "Vending Machine" model leads to ruin. |
+| **Mismatch Radar** | 262 | Detect reciprocity gaps early via 3 axes: Initiation, Bandwidth, Depth |
+| **Skeptic Gate** | 261 | Antecedents-First, 3 Hypotheses, Least-Regret Move (breaks validation spirals) |
+| **Trilateral Feedback** | session-16 | User (Intuition) + AI (Model) + Red Team (Audit) > Bilateral (Mutual Blindness Risk) |
+| **SFA/CDSA Physics** | CS-198 | Financial Crime Floor = 5 Years (Double Tap charges) |
+| **Validation vs Authority** | 309 | Validation = Single LP (10-20%); Authority = Multi-Page (80-90%) |
+| **Clinkz Doctrine** | Session 12 | Identity-First Positioning; AI Agents > Human Team (Cost Arbitrage) |
+| **WaaS Paradox** | CS-338 | Zone A (Profitable/Simple) vs Zone B (Unprofitable/Complex Apps) cliff |
+| **XYZ Pricing** | CS-342 | Risk Distribution: Base (X) + Output (Y) + Outcome (Z) > Retainer |
+| **Proof-First** | CS-345 | Content (Proof) precedes Ads (Traffic); Naked Ads = Burned Cash |
+| **Macro-Viral** | Dear Modern | Mass Entertainment -> Long Trust -> Product (3.5M Followers) |
+| **Micro-Trust** | A1 Physics | Targeted Proof ("F9->A2") -> Direct Whatsapp -> High Ticket (1k Followers) |
+| **Pure Pull** | 316 | Focus on high-urgency/crisis niches (GBP/Amazon) + Mandatory infrastructure (Medical) |
+| **Human-in-the-Loop** | 316 | Arbitrage exists only where generic AI output is insufficient (JSON-LD, Compliance) |
+| **Kill Switch** | CS-340 | Asset Control (Hosting/Domain) is the only enforcement for Retainers |
+| **Variance Tax** | Law #3 | Volatility is a subtraction term. Paid in Stops (Efficient) or Margin (Robust). (Session 02) |
+| **Efficiency vs Robustness** | Trade-off Matrix | Efficient = High ROI / Low Survival. Robust = Low ROI / High Survival. (Session 02) |
+| **Bank Robber Paradox** | Session 9 | Clinical detachment (Filter > Sales) = Ultimate Kindness. Passion vs Economics. |
+| **Ghost Protocol** | Session 01 | Privacy is the Product. High-SES clients buy Immunity, not Competence. |
+| **Selection > Conversion** | CS-373 | Situationship Fallacy: Use price/positioning to sort, not sell. Don't manufacture attraction. |
+| **Validate > Capitalize** | CS-372 | CapEx/OpEx Trap: Low CapEx + Low OpEx + Fast Validation = Anti-Ruin. |
+| **One Page Wonder** | CS-375 | SEO Bridge: Rank for high-vol info keywords (Grading System) -> Brand Exposure. |
+| **3+1 Competitive Moat** | 282 | Price/Effectiveness/Efficiency + X-Factor (Hidden Benefit) = Market Entry condition. |
+| **Twin Engine Protocol** | 46 | Unit A (Salary) + Unit B (Wealth) = Solves 6w5 Greed/Fear Paradox. |
+| **Familiarity Heuristic** | Session 2026-01-23 | Trust is borrowed. Use official assets (WhatsApp/Tele logos) to trigger "Safe" pattern recognition. |
+| **Identity Consultant** | Session 2026-01-23 | "Not a Paper Mill" = High-Status Frame. Sell "Consulting", not "Ghostwriting". |
+| **Drift Hazard** | CS-178 | "The Map is Not the Territory." Code evolves faster than Docs. Verify against Runtime (app.py), not Memory. |
+| **Idea Meritocracy** | Protocol 140 | Believability Weighting (Ray Dalio). 3-Sigma Rule for Information Filtering. |
+| **The Optionality Premium** | Session 08 | Rent Safety > Buy Leverage. Pay higher variable costs to avoid fixed-cost ruin until base volume is guaranteed. |
+| **Capital Physics** | Session 01 (Jan 29) | Drawdown Budget ($ Loss) + Margin Locked ($ Locked) = Total Account Cash ($ Actual). Terminology standardized for risk. |
+| **The Generosity Trap** | Session 04 (Feb 09) | Low Fee + High Variance (Online) < High Fee + Low Variance (Live). Don't confuse "Cheap" with "Profitable". |
+| **Depreciation Inversion** | CS-2026 | In distorted markets, "New" assets may have lower OpEx than "Used". (Car Buying Anomaly). |
+| **Lateral Thinking** | Protocol 138 | **Kobayashi Maru**: If SDR > 5:1 (Rigged Game), question premises and break rules (if Law #1 safe). |
+| **Wealth Psychology** | CS-2026-02-02 | The Decoupling: Protocol 404 (Fetch vs. Reason separation). |
+| **Feedback Cutoff** | Law #8 | Imperviousness Ratio > 5.0 = Immediate Pivot to Service Level (No Teaching). |
+| **Hope Override** | CS-012 | The tax paid for ignoring reality in favor of a simulation. Countermeasure: Reality Gate. |
+| **Memory Hardening** | 2026-02-15 | Exponential Backoff + 60s Timeout to prevent 429 crashes (Session 03). |
+| **Buffer Formula** | Session 09 | Volatility + 50% Margin of Safety. Calibrate stops to Noise, not Price. |
+| **Pain Threshold Sizing** | Session 09 | Size = min(Technical Risk, Sleep Well Number). Psychology > Math. |
+| **Sophie's Choice** | Session 07 (Feb 17) | Negative-Sum Game. Solution = Pre-Emption (Don't enter). |
+| **Umbrage Trap** | CS-371 | Frame Failure (Anger). Solution = Reframe (Integrity funded by PnL). |
+| **Bureaucratic Liability** | Law #27 | Authority floats (Immunity), Liability sinks (Executor). Never accept Resp without Auth. |
+| **Volatility Drag** | Session 06 (Feb 18) | Growth = Edge - Variance/2. High variance imposes a "Tax" that destroys compounding. |
+| **Variance Preference** | Session 06 (Feb 18) | Low Variance (Compounding) vs High Variance (Desperation/Free Roll). Match variance to survival constraint. |
+| **Investor Barbell** | Session 03 (Feb 19) | Structure: $5K Bankroll = $1K Active (20%) + $4K HYSA (80%). Yields ~55% ROI with structural ruin protection. |
+| **GEO Alpha** | 317 | YouTube/Reddit organic threads > Website Blogs for LLM citation/visibility. (Session 12) |
+| **Dual-Setup Sizing** | Session 02 (Feb 22) | 90% Robust (Wide SL, 2 Bullet) / 10% Efficient (Tight SL, 1 Bullet) |
+| **AP Sizing Logic** | Session 02 (Feb 22) | Max allocation (5-10%) requires structural 'Gravity Well' / 'True Count' tell |
+| **Kelly Constraints** | Session 02 (Feb 22) | Efficient setups (50% ATR) cap Kelly Fraction due to variance-induced lower Win Rate. |
+| **Context Density** | 321 | Dense Signal (7K) > Padded Context (15K). Prioritize attention weight over raw volume. |
+| **Bionic Swarm Blueprint** | Session 08 | **Backwards Induction**: Define Goal -> Map Prerequisites -> Node-Agent Assignment. |
+| **Trading Hierarchy** | Session 08 | **Structure > Management > Selection**: Sizing/SL matches volatility, not budget. |
+| **Marketing Swarm** | Session 08 | 16-skill modular architecture for ad extraction -> strategy -> production -> deployment. |
+| **Distribution First Law** | Session 10 | Validating audience language/needs > engineering sophistication. (Moat building). |
+| **The Dignity Premium** | Session 10 | The status/assurance surplus paid for human labor in B2C vs commodity AI. |
+| **Half-Kelly Criterion** | Session 10 | Optimal compounding ($75\%$ growth, $50\%$ variance reduction) for verified systems. |
+| **Boring Task Alpha** | Session 10 | Automation of 2-3 repetitive tasks >> "AI Strategy" slide decks. |
+| **Structural Null Zone** | Session 03 (Feb 26) | In semi-stochastic domains, provide a "valid structural zone" rather than a precise number, and emphasize position sizing. |
+| **Bionic Synergy Guard** | Session 03 (Feb 26) | Do not yield to user pushback if the mathematical/structural reasoning is sound. Sycophancy breaks the Bionic Unit synergy. |
+| **Friction Multiplier** | Session 07 (Feb 26) | Selling the procedure (rapid scoping) > Selling the result. Decreases pushback, warrants higher anchoring. |
+| **The Pryce Effect** | Session 19 (Feb 27) | In semi-stochastic domains, P(S) is an unknown distribution. Assigning MEV/EEV weights without base rates is false precision. Defer P(S) to user intuition. |
+| **Operator's Trade Blueprint** | 369 | 5 Levers configured for psychological robustness (Wide SL, 2-Bullet, Scale+Trail). Maps EEV > MEV and 80/16/4 BCG Classification. (Session 19) |
+| **BCG Capital Matrix** | Session 10 | The Core Portfolio (80% Cash Cow) pays a Capital Premium (Wide SL, Low RR) for WR survivability. The 4% Star (Barbell) demands total convexity (Tight SL, exact entry) and maximum density. |
+| **The Full Port Barbell** | Session 10 | The 4% Star tier structurally relies on maximum leverage at the micro-level (e.g., 309 layers / 31 pips) to create asymmetric payoff sets, accepting total 4% loss as an entry fee. |
+| **EEV Reality Testing** | Session 05 (Feb 28) | Applied Economic Expected Value and Law of Ruin cross-domain to interpersonal relationships to bypass covert/emotional contracts. |
+| **Input-Conviction Principle** | Case Study (Mar 04) | Athena's conviction is directly proportional to context completeness. Incomplete context → hedged framework (Law #1). Complete context → direct operational verdict. |
 
 ---
 
-## 🛡️ The Most Powerful Feature: Trilateral Feedback Loop
+## 6. Key Reference Documents
 
-> **One AI is not enough for life decisions.**
-
-This is Athena's biggest unlock: **cross-model validation that catches idiosyncratic errors and forces deeper investigation when models disagree**.
-
-> [!IMPORTANT]
-> **The human remains the ultimate arbiter.** Cross-model consensus is a *disagreement detector*, not a truth oracle. LLMs can share training data biases. Final conclusions must be grounded with fact-finding, references, and citations.
-
-```mermaid
-flowchart LR
-    A[You] -->|1. Query| B["Athena<br/>(Claude)"]
-    B -->|2. Discuss| A
-    A -->|3. Export Artifact| C["AI #2<br/>Gemini"]
-    A -->|3. Export Artifact| D["AI #3<br/>ChatGPT"]
-    A -->|3. Export Artifact| E["AI #4<br/>Grok"]
-    C -->|4. Red-Team Audit| F[Findings]
-    D -->|4. Red-Team Audit| F
-    E -->|4. Red-Team Audit| F
-    F -->|5. Return| B
-    B -->|6. Synthesize| G[Final Conclusion]
-    
-    style A fill:#4a9eff,color:#fff
-    style B fill:#cc785c,color:#fff
-    style C fill:#4285f4,color:#fff
-    style D fill:#10a37f,color:#fff
-    style E fill:#1da1f2,color:#fff
-    style G fill:#22c55e,color:#fff
-```
-
-👉 [docs/TRILATERAL_FEEDBACK.md](docs/TRILATERAL_FEEDBACK.md)
+| Document | Purpose | Note |
+| :--- | :--- | :--- |
+| [Core_Identity.md](.framework/v8.0-alpha/modules/Core_Identity.md) | Laws, Identity, RSI | Reference |
+| [memory_bank/](.context/memory_bank/) | Active System Context | Supersedes project_state.md (Session 03) |
+| [WORKFLOW_INDEX.md](.agent/WORKFLOW_INDEX.md) | All 25+ workflows | Reference |
+| [SKILL_INDEX.md](.agent/skills/SKILL_INDEX.md) | All 215 protocols | Reference |
+| [TAG_INDEX_*.md](.context/TAG_INDEX_A-M.md) | Sharded File discovery | Reference |
 
 ---
-
-## Reference Implementation
-
-This repo documents **Winston's personal Athena instance** — 1000+ sessions, 308 unique protocols, production-tested daily.
-
-It's included as a **reference**, not a prescription. Your instance will reflect your domain, your decisions, your voice.
-
-👉 [**About the Author**](docs/ABOUT_ME.md)
-
----
-
-## License
-
-MIT License — see [LICENSE](LICENSE)
-
----
-
-## 📚 Further Reading
-
-### New Additions (January 2026)
-
-> [!TIP]
-> **New to AI agents?** Start with [What Is an AI Agent?](docs/WHAT_IS_AN_AI_AGENT.md) → then follow [Your First Agent](docs/YOUR_FIRST_AGENT.md) for a 5-minute quickstart.
-
-| Document | What It Shows |
-|----------|---------------|
-| [**📋 Spec Sheet**](docs/SPEC_SHEET.md) | Project specification: role, scope, constraints, and acceptance criteria |
-| [**👤 About Me**](docs/ABOUT_ME.md) | Career narrative and professional depth |
-| [**📊 Benchmarks**](docs/BENCHMARKS.md) | Real performance metrics (boot time, search latency, token economics) |
-| [**🎬 Demo Guide**](docs/DEMO.md) | Live walkthrough of the system in action |
-
-<details>
-<summary><strong>📁 Case Studies</strong></summary>
-
-| Case Study | What It Demonstrates |
-|------------|----------------------|
-| [Boot Optimization](examples/case_studies/CS-001-boot-optimization.md) | 85% boot time reduction via caching & parallelization |
-| [Search Quality](examples/case_studies/CS-002-search-quality.md) | RRF fusion for hybrid semantic search |
-| [Protocol Enforcement](examples/case_studies/CS-003-protocol-enforcement.md) | Governance engine for compliance |
-| [Vibe Coding](examples/case_studies/CS-120-vibe-coding-zero-cost-stack.md) | Zero-point UI development on a budget |
-| [Silent Partner](examples/case_studies/CS-140-bcm-silent-partner-analysis.md) | BCM analysis for corporate strategy |
-| [Auto-Blog](examples/case_studies/CS-144-n8n-auto-blog-workflow.md) | Multi-agent n8n workflow for content velocity |
-
-</details>
-
-<details>
-<summary><strong>🔒 Security Model</strong></summary>
-
-### Data Residency Options
-
-| Mode | Where Data Lives | Best For |
-|------|------------------|----------|
-| **Cloud** | Supabase (your project) | Cross-device access, collaboration |
-| **Local** | Your machine only | Sensitive data, air-gapped environments |
-| **Hybrid** | Local files + cloud embeddings | Best of both (embeddings only leave machine) |
-
-> **Sensitive data?** Keep it local. The `athena` SDK supports local vector stores (ChromaDB, LanceDB) for users who don't want data leaving their machine. See [docs/LOCAL_MODE.md](docs/LOCAL_MODE.md).
-
-### What Leaves Your Machine (Cloud Mode)
-
-| Component | Sends Raw Text? | Sends Embeddings? | Destination |
-|-----------|-----------------|-------------------|-------------|
-| **Embedding API** | Yes (text chunks) | — | Google Cloud |
-| **LLM API** | Yes (prompts) | — | Anthropic (Claude) |
-| **Supabase** | No | Yes (vectors only) | Your Supabase project |
-
-### Key Security Practices
-
-- **Supabase Keys**: Use `SUPABASE_ANON_KEY` for client-side operations. Never expose `SUPABASE_SERVICE_ROLE_KEY` in code or logs.
-- **Row-Level Security**: Enable RLS on Supabase tables. See [SECURITY.md](SECURITY.md) for policy templates.
-- **Agentic Safety**: If using an agentic IDE with filesystem access, restrict the agent's working directory. Never grant access to `~/.ssh`, `.env` files, or git credentials.
-
-### Memory Insurance (Disaster Recovery)
-
-Supabase is not just a search layer — it's a **backup** of all indexed memories. If local files are lost, the vector database enables full recovery.
-
-| Failure Scenario | Recovery Path |
-|------------------|---------------|
-| Local disk failure | Pull from Supabase embeddings → reconstruct Markdown |
-| Accidental deletion | Re-index from cloud → restore local files |
-| Session corruption | Replay from session_logs table |
-
-> **Philosophy**: Cloud is not "home" — it's insurance.
-
-**Why Redundancy Matters**: In system design, redundancy is the intentional duplication of critical components to increase reliability. Athena follows this principle:
-
-- **Primary**: Local Markdown files (git-versioned, human-readable)
-- **Secondary**: Supabase vector embeddings (cloud-native, searchable)
-- **Tertiary**: Session logs with timestamps (audit trail)
-
-This isn't over-engineering — it's survival. Platform APIs change. Local disks fail. The only hedge is **strategic duplication**.
-
-</details>
-
-<details>
-<summary><strong>⚙️ Prerequisites (API Keys)</strong></summary>
-
-- Python 3.10+
-- Supabase project with pgvector enabled ([setup guide](docs/GETTING_STARTED.md)) — *or use local mode*
-- API keys in `.env`:
-
-```bash
-# Required
-SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_ANON_KEY=your-anon-key  # NOT service_role key
-ANTHROPIC_API_KEY=your-anthropic-key  # For Claude reasoning
-
-# Optional (for trilateral feedback with multiple LLMs)
-GOOGLE_API_KEY=your-google-api-key
-OPENAI_API_KEY=your-openai-key
-```
-
-```bash
-cp .env.example .env
-# Add your keys to .env
-```
-
-</details>
-
-<details>
-<summary><strong>🛠️ Tech Stack & Architecture</strong></summary>
-
-### Tech Stack
-
-| Layer | Technology | Purpose |
-|-------|------------|---------|
-| **SDK** | `athena` Python package | Core search, reranking, memory |
-| **Reasoning** | Claude Opus 4.5 (primary) | Main reasoning engine |
-| **IDE** | Antigravity (supports Claude, Gemini, GPT) | Agentic development environment |
-| **Embeddings** | `text-embedding-004` (768-dim) | Google embedding model |
-| **GraphRAG** | NetworkX + Leiden + ChromaDB | [Knowledge graph](docs/GRAPHRAG.md) ⚠️ **~$50 API** |
-| **Memory** | Supabase + pgvector *or* local (ChromaDB) | Vector database |
-| **Knowledge Store** | Markdown files (git-versioned) | Human-readable, locally owned |
-
-### The Core Loop
-
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                                                                         │
-│   (1) /start ──► Retrieve Context ──► (2) Work ──► (3) /end             │
-│       ▲                                                    │            │
-│       │                                                    ▼            │
-│       └───── (5) Next Session ◄── Embed ◄── (4) Extract & Store        │
-│                                                                         │
-└─────────────────────────────────────────────────────────────────────────┘
-```
-
-Think of it like **Git, but for conversations**. Each session builds on the last. Important decisions get captured, indexed, and recoverable.
-
-### What Athena Does
-
-| Feature | How It Works |
-|---------|--------------|
-| **`/start` boot** | Loads identity + retrieves relevant context from long-term memory |
-| **`/end` commit** | Summarizes session, extracts decisions, saves to knowledge store |
-| **Hybrid search** | Fuses Canonical + [GraphRAG](docs/GRAPHRAG.md) + Tags + [Vectors](docs/VECTORRAG.md) + Filenames via RRF |
-| **Cross-encoder reranking** | Refines top results with `sentence-transformers` |
-| **Protocol library** | [200+ protocols across 17 categories) |
-
-### Repository Structure
-
-```
-Athena-Public/
-├── src/athena/           # SDK package (pip installable)
-│   ├── core/             #    Config, models
-│   ├── tools/            #    Search, reranker, latency
-│   └── memory/           #    Vector DB interface
-├── examples/
-│   ├── quickstart/       # Runnable demos
-│   ├── scripts/          # Automation scripts
-│   ├── protocols/        # 200+ decision frameworks across 17 categories
-│   ├── workflows/        # Slash commands
-│   └── templates/        # Starter templates
-├── docs/                 # Deep documentation
-├── community/            # Contributing, roadmap
-├── pyproject.toml        # Modern packaging
-└── .env.example          # Environment template
-```
-
-</details>
-
-<details>
-<summary><strong>📖 Key Concepts & Workflows</strong></summary>
-
-### Key Concepts
-
-- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — How the system is designed
-- [docs/GRAPHRAG.md](docs/GRAPHRAG.md) — Knowledge graph layer (community detection + entity search)
-- [docs/VECTORRAG.md](docs/VECTORRAG.md) — Semantic memory implementation
-- [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md) — Build your own
-- [examples/concepts/adaptive_latency.md](examples/concepts/adaptive_latency.md) — `/start`, `/think`, `/ultrathink`
-- [docs/GLOSSARY.md](docs/GLOSSARY.md) — Key terms and definitions
-
-### Example Workflows
-
-| Command | Description |
-|---------|-------------|
-| `/start` | Boot system, load identity |
-| `/end` | Close session, commit to memory |
-| `/think` | Deep reasoning mode |
-| `/ultrathink` | Maximum depth analysis |
-| `/refactor` | Workspace optimization |
-| `/research` | Multi-source web research |
-
-See [examples/workflows/](examples/workflows/) for full list.
-
-</details>
-
-<details>
-<summary><strong>📋 Changelog</strong></summary>
-
-- **v8.5.0** (Feb 12 2026): **Phase 1 Complete** — MCP Tool Server, Permissioning Layer, Search MRR +105%. "Linux OS for AI Agents" pivot.
-- **v1.5.0** (Feb 1 2026): **The 5-Minute Upgrade** — `athena init` command scaffolds workspace instantly, `--doctor` flag for system health check, fixed path discovery for pip installs, centralized version management
-- **v8.2-Stable** (Feb 1 2026): Metrics Sync — 984 sessions, 308 protocols, 160 scripts; README overhaul, KG integration audit
-- **v8.0-Stable** (Jan 2026): Zero-Point Refactor — Sovereign Environment hardened, Score-Modulated RRF (weights rebalanced), tech debt consolidated
-- **v1.2.8** (Jan 2026): Grand Alignment refactor — Supabase schema hardened (11 tables + RLS), Memory Insurance layer stabilized, metrics corrected
-- **v1.2.7** (Jan 2026): Metrics sync — 332 protocols, 610 sessions
-- **v1.2.6** (Jan 2026): Stats sync — 605 sessions, 119 scripts; README restructure
-- **v1.2.5** (Jan 2026): Stats sync — 277 protocols; Python badge fix (3.13)
-- **v1.2.4** (Jan 2026): README restructure — collapsed technical sections into "Further Reading"
-- **v1.2.3** (Jan 2026): Stats correction — 269 protocols, 538 sessions, 117 scripts
-- **v1.2.2** (Jan 2026): Stats sync — 248 protocols, 560 sessions, 97 scripts; removed off-topic content
-- **v1.2.1** (Jan 2026): README overhaul — Process section, Security Model, co-development narrative
-- **v1.2.0** (Jan 2026): New year sync — 246 protocols, 511 sessions
-- **v1.1.0** (Dec 2025): Year-end sync — 238 protocols, 489 sessions
-- **v1.0.0** (Dec 2025): SDK architecture (`src/athena/`), quickstart examples
-
-👉 [docs/CHANGELOG.md](docs/CHANGELOG.md)
-
-</details>
-
----
-
-*For the full documentation, case studies, and deep dives, see [docs/](docs/).*
