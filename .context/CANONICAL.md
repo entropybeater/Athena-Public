@@ -5,7 +5,7 @@ last_updated: 2026-02-27
 
 # Canonical Memory (Materialized View)
 
-> **Protocol**: [Protocol 215](Athena-Public/examples/protocols/architecture/215-canonical-memory.md)  
+> **Protocol**: **Protocol 215**  
 > **Purpose**: Single Source of Truth for active facts. Supersedes conflicting info in Session Logs.  
 > **Last Updated**: 27 February 2026 (v9.2.8)
 
@@ -100,7 +100,7 @@ last_updated: 2026-02-27
 | **V4 Integration** | Autonomic Mode (Quad-Lock) | "Magic" > Manual. Automated Scaffolding & Secret Scanning (Session 13) |
 | **Bilingual Cognition** | Dual-Boot Architecture | English (Logic) + Chinese (Context) to maximize semantic density (Session 20) |
 | **Business Model** | Sherpa Service (Consultancy) | Selling "Sovereign Brain" Installation & Education > "Software" (Session 15) |
-| **Stop Pattern** | [Protocol 112](.agent/skills/protocols/coding/112-stop-pattern.md) | Explicit negative constraints for safety (Claude Mastery Steal) |
+| **Stop Pattern** | **Protocol 112** | Explicit negative constraints for safety (Claude Mastery Steal) |
 | **Public Sync Guard** | Blacklist Mode + Hard Exclusion | `sync_to_public.py` excludes `case_studies` to prevent IP leak. (Session 11) |
 | **Dependency Hygiene** | Minimalist (No Unused) | Removed `dspy-ai` to fix `diskcache` vuln. Attack surface reduction. (Session 11) |
 | **Efficiency Wins** | Robust Macro + Efficiency Micro | **Reflex Search** (<200ms) + **Sniper Mode** (Risk-Based Compute) |
@@ -209,10 +209,10 @@ last_updated: 2026-02-27
 
 | Document | Purpose | Note |
 | :--- | :--- | :--- |
-| [Core_Identity.md](.framework/v8.0-alpha/modules/Core_Identity.md) | Laws, Identity, RSI | Reference |
+| [Core_Identity.md](../.framework/v8.2-stable/modules/Core_Identity.md) | Laws, Identity, RSI | Reference |
 | [memory_bank/](.context/memory_bank/) | Active System Context | Supersedes project_state.md (Session 03) |
-| [WORKFLOW_INDEX.md](.agent/WORKFLOW_INDEX.md) | All 25+ workflows | Reference |
-| [SKILL_INDEX.md](.agent/skills/SKILL_INDEX.md) | All 215 protocols | Reference |
-| [TAG_INDEX_*.md](.context/TAG_INDEX_A-M.md) | Sharded File discovery | Reference |
+| **WORKFLOW_INDEX.md** | All 25+ workflows | Reference |
+| **SKILL_INDEX.md** | All 215 protocols | Reference |
+| **TAG_INDEX_*.md** | Sharded File discovery | Reference |
 
 ---
