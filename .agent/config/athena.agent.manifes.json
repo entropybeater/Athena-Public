@@ -1,0 +1,12 @@
+{
+    "version": "1.0",
+    "metadata": {
+        "name": "Athena Sovereign Agent"
+    },
+    "orchestration": {
+        "primary_model": "claude-4-6-sonnet",
+        "fallback_model": "claude-4-6-opus",
+        "provider": "anthropic"
+    },
+    "allow_external_models": true
+}
